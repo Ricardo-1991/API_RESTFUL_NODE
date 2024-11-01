@@ -48,12 +48,13 @@ Para iniciar o servidor utilize:
 ```bash
 npm run start
 ```
-Endpoints
+## Endpoints
+
 A API possui os seguintes endpoints para o cadastro de estudantes:
 
-POST /estudantes: Cria um novo estudante.
-GET /estudantes: Lista todos os estudantes cadastrados.
-GET /estudantes/:id: Obtém os detalhes de um estudante específico.
-PUT /estudantes/:id: Atualiza os dados de um estudante específico.
-DELETE /estudantes/:id: Remove um estudante do cadastro.
+- **POST /estudantes**: Cria um novo estudante.
+- **GET /estudantes**: Lista todos os estudantes cadastrados.
+- **GET /estudantes/:id**: Obtém os detalhes de um estudante específico.
+- **PUT /estudantes/:id**: Atualiza os dados de um estudante específico.
+- **DELETE /estudantes/:id**: Remove um estudante do cadastro.
 
