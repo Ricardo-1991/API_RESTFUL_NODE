@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get("/", StudentController.getAll)
 
-router.post("/", StudentController.create)
+router.post("/student", StudentController.create)
 
 router.put("/student/:id")
 
