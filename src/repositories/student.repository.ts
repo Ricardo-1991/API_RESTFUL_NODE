@@ -18,8 +18,15 @@ const students: IStudent[] = [{
     return students;
 }
 
+const create = (name: string, email: string, course: string) => {
+    const newStudent = new Student(uuid(), name, email, course);
+    students.push(newStudent);
+    return newStudent;
+}
+
 export const StudentRepository = {
-    findAll
+    findAll,
+    create
 }
 
 

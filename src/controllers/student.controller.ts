@@ -1,4 +1,4 @@
-import {Request, Response} from "express"
+import {Request, Response} from "express";
 import { StudentService } from "../services/student.service";
 
 
@@ -7,7 +7,13 @@ const getAll = (request: Request, response: Response) => {
     response.status(200).json(students);
 }
 
+const create = (request: Request, response: Response) => {
+    const { name, email, course } = request.body;
+    const newStudent = StudentService.create(name, email, course);
+    response.status(201).json(newStudent);
+}
 
 export const StudentController = {
-    getAll
+    getAll,
+    create
 }
