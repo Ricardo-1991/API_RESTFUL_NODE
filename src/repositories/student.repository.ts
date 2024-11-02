@@ -1,5 +1,5 @@
 import {v4 as uuid} from 'uuid';
-import { Student } from '../model/studenty.entity';
+import { Student } from '../models/studenty.entity';
 
 interface IStudent {
     id?: string;
@@ -24,12 +24,17 @@ const create = (newStudent: IStudent) => {
     return newStudent;
 }
 
+const findById = (id: string) => {
+    return students.find(student => student.id === id);
+}
+
 const findByEmail = (email: string) => {
     return students.find(student => student.email === email);
 }
 
 export const StudentRepository = {
     findAll,
+    findById,
     create,
     findByEmail
 }

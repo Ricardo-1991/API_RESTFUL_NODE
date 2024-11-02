@@ -7,6 +7,12 @@ const getAll = (request: Request, response: Response) => {
     response.status(200).json(students);
 }
 
+const findById = (request: Request, response: Response) => {
+    const id = request.params.id;
+    const student = StudentService.findById(id);
+    response.status(200).json(student);
+}
+
 const create = (request: Request, response: Response) => {
     const { name, email, course } = request.body;
     const newStudent = StudentService.create(name, email, course);
@@ -15,5 +21,6 @@ const create = (request: Request, response: Response) => {
 
 export const StudentController = {
     getAll,
+    findById,
     create
 }
