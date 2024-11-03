@@ -19,8 +19,26 @@ const create = (request: Request, response: Response) => {
     response.status(201).json(newStudent);
 }
 
+const update = (request: Request, response: Response) => {
+    const id = request.params.id;
+    const { name, email, course } = request.body;
+
+    try {
+        const updatedStudent = StudentService.update(id, name, email, course);
+        response.status(200).json(updatedStudent);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            response.status(404).json({ message: error.message });
+        } else {
+            response.status(500).json({ message: "Um erro inesperado ocorreu." });
+        }
+    }
+}
+
+
 export const StudentController = {
     getAll,
     findById,
-    create
+    create,
+    update // Adicione esta linha
 }

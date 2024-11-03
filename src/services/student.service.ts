@@ -28,8 +28,24 @@ const create = (name: string, email: string, course: string) => {
     return StudentRepository.create(newStudent);
 }
 
+const update = (id: string, name: string, email: string, course: string) => {
+    const studentExists = StudentRepository.findById(id);
+    if (!studentExists) {
+        throw new Error('Estudante não encontrado.');
+    }
+
+    const studentWithEmail = StudentRepository.findByEmail(email);
+    if (studentWithEmail && studentWithEmail.id !== id) {
+        throw new Error('Este e-mail já está cadastrado.');
+    }
+
+    const updatedStudent = new Student(id, name, email, course);
+    return StudentRepository.update(updatedStudent);
+}
+
 export const StudentService = {
     getAll,
     findById,
-    create
+    create,
+    update // Adicione esta linha
 }

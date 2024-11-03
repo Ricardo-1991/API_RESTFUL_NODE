@@ -32,11 +32,20 @@ const findByEmail = (email: string) => {
     return students.find(student => student.email === email);
 }
 
+const update = (updatedStudent: IStudent) => {
+    const index = students.findIndex(student => student.id === updatedStudent.id);
+    if (index === -1) {
+        throw new Error('Estudante não encontrado.');
+    }
+    students[index] = updatedStudent;
+    return updatedStudent;
+}
+
 export const StudentRepository = {
     findAll,
     findById,
     create,
-    findByEmail
+    findByEmail,
+    update // Adicione esta linha
 }
-
 
