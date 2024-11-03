@@ -21,10 +21,10 @@ const create = (request: Request, response: Response) => {
 
 const update = (request: Request, response: Response) => {
     const id = request.params.id;
-    const { name, email, course } = request.body;
+    const { name, course } = request.body;
 
     try {
-        const updatedStudent = StudentService.update(id, name, email, course);
+        const updatedStudent = StudentService.update(id, name, course);
         response.status(200).json(updatedStudent);
     } catch (error: unknown) {
         if (error instanceof Error) {

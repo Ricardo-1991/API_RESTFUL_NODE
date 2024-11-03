@@ -4,7 +4,7 @@ import { Student } from '../models/studenty.entity';
 interface IStudent {
     id?: string;
     name: string;
-    email: string;
+    email?: string;
     course: string;
 }
 
@@ -33,12 +33,12 @@ const findByEmail = (email: string) => {
 }
 
 const update = (updatedStudent: IStudent) => {
+
     const index = students.findIndex(student => student.id === updatedStudent.id);
-    if (index === -1) {
-        throw new Error('Estudante não encontrado.');
-    }
-    students[index] = updatedStudent;
-    return updatedStudent;
+
+    students[index] = { ...students[index], ...updatedStudent };
+    return students[index];
+
 }
 
 export const StudentRepository = {
