@@ -40,7 +40,7 @@ const deleteStudent = (request: Request, response: Response) => {
 
     try {
         StudentService.delete(id);
-        response.status(204).send(); // No content response
+        response.status(204).send(); 
     } catch (error: unknown) {
         if (error instanceof Error) {
             response.status(404).json({ message: error.message });
