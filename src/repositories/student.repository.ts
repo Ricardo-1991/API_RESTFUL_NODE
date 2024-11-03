@@ -1,14 +1,8 @@
 import {v4 as uuid} from 'uuid';
 import { Student } from '../models/studenty.entity';
+import { StudentDto } from '../dtos/userDto';
 
-interface IStudent {
-    id?: string;
-    name: string;
-    email?: string;
-    course: string;
-}
-
-const students: IStudent[] = [{
+const students: StudentDto[] = [{
     id: uuid(),
     name: 'John Doe',
     email: 'jdoe@me.com',
@@ -19,7 +13,7 @@ const students: IStudent[] = [{
     return students.map(student => student);
 }
 
-const create = (newStudent: IStudent) => {
+const create = (newStudent: StudentDto) => {
     students.push(newStudent);
     return newStudent;
 }
@@ -32,10 +26,8 @@ const findByEmail = (email: string) => {
     return students.find(student => student.email === email);
 }
 
-const update = (updatedStudent: IStudent) => {
-
+const update = (updatedStudent: StudentDto) => {
     const index = students.findIndex(student => student.id === updatedStudent.id);
-
     students[index] = { ...students[index], ...updatedStudent };
     return students[index];
 
@@ -43,10 +35,7 @@ const update = (updatedStudent: IStudent) => {
 
 const deleteStudent = (id: string) => {
     const index = students.findIndex(student => student.id === id);
-    if (index === -1) {
-        throw new Error('Estudante não encontrado.');
-    }
-    students.splice(index, 1); // Remove o estudante do array
+    students.splice(index, 1);
 }
 
 export const StudentRepository = {

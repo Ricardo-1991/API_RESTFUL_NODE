@@ -44,7 +44,6 @@ const deleteStudent = (id: string) => {
     if (!studentExists) {
         throw new Error('Estudante não encontrado.');
     }
-
     return StudentRepository.delete(id);
 }
 
@@ -53,5 +52,5 @@ export const StudentService = {
     findById,
     create,
     update,
-    delete: deleteStudent // Adicione esta linha
+    delete: deleteStudent
 }
