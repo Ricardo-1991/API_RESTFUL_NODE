@@ -28,8 +28,29 @@ const create = (name: string, email: string, course: string) => {
     return StudentRepository.create(newStudent);
 }
 
+const update = (id: string, name: string, course: string) => {
+   
+    const studentExists = StudentRepository.findById(id);
+    if (!studentExists) {
+        throw new Error('Estudante não encontrado.');
+    }
+    studentExists.name = name
+    studentExists.course = course
+    return StudentRepository.update(studentExists);
+}
+
+const deleteStudent = (id: string) => {
+    const studentExists = StudentRepository.findById(id);
+    if (!studentExists) {
+        throw new Error('Estudante não encontrado.');
+    }
+    return StudentRepository.delete(id);
+}
+
 export const StudentService = {
     getAll,
     findById,
-    create
+    create,
+    update,
+    delete: deleteStudent
 }
