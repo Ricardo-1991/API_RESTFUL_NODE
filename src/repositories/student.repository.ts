@@ -4,7 +4,7 @@ import { Student } from '../models/studenty.entity';
 interface IStudent {
     id?: string;
     name: string;
-    email: string;
+    email?: string;
     course: string;
 }
 
@@ -32,11 +32,20 @@ const findByEmail = (email: string) => {
     return students.find(student => student.email === email);
 }
 
+const update = (updatedStudent: IStudent) => {
+
+    const index = students.findIndex(student => student.id === updatedStudent.id);
+
+    students[index] = { ...students[index], ...updatedStudent };
+    return students[index];
+
+}
+
 export const StudentRepository = {
     findAll,
     findById,
     create,
-    findByEmail
+    findByEmail,
+    update // Adicione esta linha
 }
-
 
