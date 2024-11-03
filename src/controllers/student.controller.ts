@@ -35,10 +35,25 @@ const update = (request: Request, response: Response) => {
     }
 }
 
+const deleteStudent = (request: Request, response: Response) => {
+    const id = request.params.id;
+
+    try {
+        StudentService.delete(id);
+        response.status(204).send(); // No content response
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            response.status(404).json({ message: error.message });
+        } else {
+            response.status(500).json({ message: "Um erro inesperado ocorreu." });
+        }
+    }
+}
 
 export const StudentController = {
     getAll,
     findById,
     create,
-    update // Adicione esta linha
+    update,
+    delete: deleteStudent // Adicione esta linha
 }

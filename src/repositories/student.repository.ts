@@ -41,11 +41,19 @@ const update = (updatedStudent: IStudent) => {
     return updatedStudent;
 }
 
+const deleteStudent = (id: string) => {
+    const index = students.findIndex(student => student.id === id);
+    if (index === -1) {
+        throw new Error('Estudante não encontrado.');
+    }
+    students.splice(index, 1); // Remove o estudante do array
+}
+
 export const StudentRepository = {
     findAll,
     findById,
     create,
     findByEmail,
-    update // Adicione esta linha
+    update,
+    delete: deleteStudent // Adicione esta linha
 }
-

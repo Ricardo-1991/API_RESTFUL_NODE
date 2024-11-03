@@ -12,7 +12,7 @@ router.post("/student", StudentController.create)
 
 router.put("/student/:id", StudentController.update);
 
-router.delete("/student/:id")
+router.delete("/student/:id", StudentController.delete);
 
 
 export default router;
