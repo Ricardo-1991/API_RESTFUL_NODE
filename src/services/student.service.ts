@@ -6,15 +6,11 @@ import { v4 as uuid } from 'uuid';
 }
 
 const findById = (id: string) => {
-    try {
-        const studentExists = StudentRepository.findById(id);
-        if (!studentExists) {
-            throw new Error('Estudante não encontrado.');
-        }
-        return studentExists;
-    }catch {
-
+    const studentExists = StudentRepository.findById(id);
+    if (!studentExists) {
+        throw new Error('Estudante não encontrado.');
     }
+    return studentExists;
 }
 
 const create = (name: string, email: string, course: string) => {
@@ -31,9 +27,11 @@ const create = (name: string, email: string, course: string) => {
 const update = (id: string, name: string, course: string) => {
    
     const studentExists = StudentRepository.findById(id);
+
     if (!studentExists) {
         throw new Error('Estudante não encontrado.');
     }
+
     studentExists.name = name
     studentExists.course = course
     return StudentRepository.update(studentExists);
