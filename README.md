@@ -30,11 +30,6 @@ Após a instalação das dependências, você pode compilar a aplicação com o 
 npm run build
 ```
 
-Após a instalação das dependências, você pode compilar a aplicação com o seguinte comando:
-
-```bash
-npm run build
-```
 ## Modo de Desenvolvimento
 Para rodar a aplicação em modo de desenvolvimento com o recurso de Watch, utilize:
 
